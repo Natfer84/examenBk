@@ -8,7 +8,7 @@ app.use(express.json());
 // MySQL
 
 // conexión Sequelize con MySQL
-const sequelize = new Sequelize("supernat", "root", "Natfer84", {
+const sequelize = new Sequelize("supernat", "root", "root", {
   host: "localhost",
   dialect: "mysql",
 });
@@ -66,9 +66,9 @@ app.listen(3000, async () => {
   }
 });
 
+
+
 // MongoDB
-
-
 
 // Conexión a MongoDB
 mongoose.connect('mongodb://127.0.0.1:27017/superNat', {
@@ -100,8 +100,8 @@ async function createUser(userData) {
   }
 }
 
-/*
-// Read (all users)
+
+/*Read (all users)
 async function getAllUsers() {
   try {
     const users = await User.find();
@@ -111,7 +111,7 @@ async function getAllUsers() {
     console.error('Error al obtener usuarios:', error);
   }
 }
-
+/*
 // Read (single user)
 async function getUserById(id) {
   try {
@@ -170,6 +170,7 @@ async function main() {
         }
       });
 
+     
 
   // Ejemplos de uso
   //await createUser({ email: 'usuario4@gmail.com', password: "contraseña321" });
