@@ -1,7 +1,7 @@
 import { Sequelize, DataTypes } from 'sequelize';
 
 // Configuración de la conexión
-const sequelize = new Sequelize('test', 'root', 'root', {
+const sequelize = new Sequelize('test', 'root', 'Natfer84', {
   host: 'localhost',
   dialect: 'mysql',
   port: 3306,
@@ -24,7 +24,7 @@ const User = sequelize.define('User', {
     allowNull: false
   }
 }, {
-  tableName: 'users'
+  tableName: 'superNat'
 });
 
 // Función para conectar a la base de datos
@@ -50,4 +50,15 @@ async function createUser(firstname, lastname) {
   } catch (error) {
     console.error('Error al crear usuario:', error);
   }
+
 }
+
+async function main() {
+    await connectToDatabase();
+    console.log(connectToDatabase);
+  
+    // Ejemplos de uso
+    await createUser('Juan', 'Pérez');
+
+}
+main().catch(console.error);
