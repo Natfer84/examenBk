@@ -4,13 +4,13 @@ import { Sequelize, DataTypes } from "sequelize";
 const app = express();
 app.use(express.json());
 
-// Configurar Sequelize con MySQL
-const sequelize = new Sequelize("superNat", "root", "Natfer84", {
+// conexión Sequelize con MySQL
+const sequelize = new Sequelize("supernat", "root", "Natfer84", {
   host: "localhost",
   dialect: "mysql",
 });
 
-// Definir el modelo Cliente
+// tabla cliente
 const Customer = sequelize.define("customer", {
   id: { type: DataTypes.INTEGER, autoIncrement: true, primaryKey: true },
   dni: { type: DataTypes.CHAR(9), allowNull: false, unique: true },
@@ -22,7 +22,7 @@ const Customer = sequelize.define("customer", {
   timestamps: false,
 });
 
-// Definir el modelo Producto
+// tabla Producto
 const Product = sequelize.define("Product", {
   id: { type: DataTypes.INTEGER, autoIncrement: true, primaryKey: true },
   barcode: { type: DataTypes.STRING(50), allowNull: false, unique: true },
@@ -54,10 +54,10 @@ app.post("/productos", async (req, res) => {
 });
 
 // Iniciar el servidor y conectar a MySQL
-app.listen(3001, async () => {
+app.listen(3000, async () => {
   try {
     await sequelize.authenticate();
-    console.log("Servidor corriendo en http://localhost:3001");
+    console.log("Servidor corriendo en http://localhost:3000");
   } catch (error) {
     console.error("Error al conectar con la base de datos:", error);
   }
